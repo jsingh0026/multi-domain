@@ -22,7 +22,7 @@ jobs:
      - name: "Deploy application"
        run: |
          prodRun=""
-         if [[ ${GITHUB_REF} == "refs/heads/main" ]]; then
+         if [[ ${GITHUB_REF} == "refs/heads/master" ]]; then
            prodRun="--prod"
          fi
  
