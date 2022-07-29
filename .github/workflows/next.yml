@@ -26,7 +26,7 @@ jobs:
           yarn run build
  
       - name: Run Tests Locally
-        run: yarn run test
+        run: yarn run lint
  
       - name: Deploy to Staging
         id: deploy-vercel-staging
@@ -40,7 +40,7 @@ jobs:
       - name: Run Tests Against Vercel
         env:
           VERCEL_URL: ${{ steps.deploy-vercel-staging.outputs.preview-url }}
-        run: yarn run test
+        run: yarn run lint
  
       - name: Deploy to Production
         uses: amondnet/vercel-action@v20
