@@ -16,10 +16,7 @@ jobs:
         run: yarn run lint
       - name: "Deploy application"
         run: |
-         prodRun=""
-         if [[ ${GITHUB_REF} == "refs/heads/master" ]]; then
-           prodRun="--prod"
-         fi
+         prodRun="--prod"
  
          npx vercel --token ${VERCEL_TOKEN} $prodRun
         env:
