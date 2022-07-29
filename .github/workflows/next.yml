@@ -15,9 +15,10 @@ jobs:
       - name: Run ESlint
         run: yarn run lint
       - name: "Deploy application"
-        run: |
-         prodRun="--prod"
- 
-         npx vercel --token ${VERCEL_TOKEN} $prodRun
-        env:
-         VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      - uses: amondnet/vercel-action@v19
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}  #Required
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} #Required 
+          alias-domains: | #Optional
+            {{Branch}}.next.vercel-action.amond.dev
